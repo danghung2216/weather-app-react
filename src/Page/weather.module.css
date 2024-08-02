@@ -1,0 +1,7 @@
+p {
+  padding: 3px;
+}
+main-content h3,
+p {
+  text-align: left;
+}
