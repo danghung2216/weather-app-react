@@ -3,30 +3,29 @@ import React, { useState } from "react";
 import "./weather.module.css";
 const API_URL = "https://api.openweathermap.org/data/2.5/";
 const API_KEY = "a86cdf3e4c1b672202cbaf9eb4d7d941";
-interface IWeatherData {
+interface WeatherData {
   name: string;
+  weather: {
+    description: string;
+    icon: string;
+  }[];
   sys: {
     sunrise: number;
     sunset: number;
   };
   main: {
     temp: number;
-    feels_like: number;
     humidity: number;
   };
   wind: {
     speed: number;
   };
-  weather: {
-    icon: string;
-    description: string;
-  }[];
 }
 
-const WeatherApp = () => {
-  const [weather, setWeather] = useState<IWeatherData>("");
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [search, setSearch] = useState("");
+const WeatherApp: React.FC = () => {
+  const [weather, setWeather] = useState<WeatherData | any>("");
+  const [currentDate, setCurrentDate] = useState<Date>(new Date());
+  const [search, setSearch] = useState<string>("");
   // const [errorMessage, setErrorMessage] = useState("");
 
   const searchLocation = async () => {
